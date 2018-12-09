@@ -1,0 +1,90 @@
+---
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <style>
+      body{
+        font: 22px/1.6 system-ui, sans-serif;
+        margin: auto;
+        max-width: 35em;
+        padding: 0 1em;
+      }
+
+      @media (max-width:1140px){
+        body{
+          font-size: 20px;
+        }
+      }
+      @media (max-width:740px){
+        body{
+          font-size: 18px;
+        }
+      }
+      @media (max-width:466px){
+        body{
+          font-size: 16px;
+        }
+      }
+
+      header h1{
+        font-size: 1em;
+      }
+
+      ul{
+        list-style: none;
+        padding: 0;
+      }
+
+      li{
+        padding: 0 1em;
+        margin: 1em 0;
+        border: 1px outset;
+      }
+
+      footer{
+        display: flex;
+        justify-content: space-between;
+      }
+
+      footer, .in_reply_to{
+        font-size: small;
+        font-style: italic;
+        margin: 1em 0;
+      }
+
+      .in_reply_to{
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+
+      time{
+        font-variant-numeric: tabular-nums;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Updates. By <a href="https://jeffkreeftmeijer.com">Jeff Kreeftmeijer</a></h1>
+    </header>
+    <ul>
+      {% for post in site.posts %}
+      <li>
+        <article>
+          {% if post.in_reply_to %}<div class="in_reply_to">Replying to <a href="{{ post.in_reply_to }}">{{ post.in_reply_to | replace:'https://', '' }}</a></div>{% endif %}
+          {{ post.content }}
+          <footer>
+            <time datetime="{{ post.date }}">{{ post.date | date: "%d/%m/%Y %H:%M" }}</time>
+            <span>
+              {% if post.mastodon %}<a href="{{ post.mastodon }}">Mastodon →</a>{% endif %}
+              {% if post.twitter %}<a href="{{ post.twitter }}">Twitter →</a>{% endif %}
+            </span>
+          </footer>
+        </article>
+      </li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>
