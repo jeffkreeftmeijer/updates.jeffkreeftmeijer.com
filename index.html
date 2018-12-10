@@ -3,8 +3,10 @@ layout: default
 ---
 <ul>
   {% for post in site.posts %}
-    <li>
-      {% include update.html %}
-    </li>
+    {% unless post.in_reply_to %}
+      <li>
+        {% include update.html %}
+      </li>
+    {% endunless %}
   {% endfor %}
 </ul>
