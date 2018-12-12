@@ -2,7 +2,11 @@
   {% if post.in_reply_to %}<div class="in_reply_to">Replying to <a href="{{ post.in_reply_to }}">{{ post.in_reply_to | replace:'https://', '' }}</a></div>{% endif %}
   {{ post.content }}
   <footer>
+    {% if page.url == post.url %}
     <time datetime="{{ post.date }}">{{ post.date | date: "%d/%m/%Y %H:%M" }}</time>
+    {% else %}
+    <a href="{{ post.url }}"><time datetime="{{ post.date }}">{{ post.date | date: "%d/%m/%Y %H:%M" }}</time></a>
+    {% endif %}
     <span>
       {% if post.mastodon %}<a href="{{ post.mastodon }}">Mastodon →</a>{% endif %}
       {% if post.twitter %}<a href="{{ post.twitter }}">Twitter →</a>{% endif %}

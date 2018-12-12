@@ -36,7 +36,7 @@
         padding: 0;
       }
 
-      li{
+      article{
         padding: 0 1em;
         margin: 1em 0;
         border: 1px outset;
@@ -70,10 +70,10 @@
   </head>
   <body>
     <header>
-      <h1>Updates. By <a href="https://jeffkreeftmeijer.com">Jeff Kreeftmeijer</a></h1>
+      <h1><a href="/">Updates</a>. By <a href="https://jeffkreeftmeijer.com">Jeff Kreeftmeijer</a></h1>
       {% if page.url == "/" %}
         <a class="replies" href="/with_replies">with replies</a>
-      {% else %}
+      {% elsif page.url == "/with_replies/" %}
         <a class="replies" href="/">without replies</a>
       {% endif %}
     </header>
