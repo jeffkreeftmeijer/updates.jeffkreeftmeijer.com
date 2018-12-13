@@ -1,4 +1,6 @@
 <article>
+  {% if post.title %}<h1>{{ post.title }}</h1>{% endif %}
+
   {% if post.in_reply_to %}<div class="in_reply_to">Replying to <a href="{{ post.in_reply_to }}">{{ post.in_reply_to | replace:'https://', '' }}</a></div>{% endif %}
   {{ post.content }}
   <footer>
