@@ -1,3 +1,4 @@
+timezone: utc
 defaults:
   -
     scope:
