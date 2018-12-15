@@ -1,4 +1,7 @@
 timezone: utc
+url: "https://updates.jeffkreeftmeijer.com"
+plugins:
+  - jekyll-sitemap
 defaults:
   -
     scope:
