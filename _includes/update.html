@@ -1,4 +1,16 @@
 <article>
+  {% if post.twitter.first %}
+    {% assign twitter = post.twitter.first or post.twitter %}
+  {% else %}
+    {% assign twitter = post.twitter %}
+  {% endif %}
+
+  {% if post.mastodon.first %}
+    {% assign mastodon = post.mastodon.first or post.mastodon %}
+  {% else %}
+    {% assign mastodon = post.mastodon %}
+  {% endif %}
+
   {% if post.title %}<h1>{{ post.title }}</h1>{% endif %}
 
   {% if post.in_reply_to %}<div class="in_reply_to">Replying to <a href="{{ post.in_reply_to }}">{{ post.in_reply_to | replace:'https://', '' }}</a></div>{% endif %}
@@ -10,8 +22,8 @@
     <a href="{{ post.url }}"><time datetime="{{ post.date | date: "%FT%TZ" }}">{{ post.date | date: "%d/%m/%Y %H:%M" }}</time></a>
     {% endif %}
     <span>
-      {% if post.mastodon %}<a href="{{ post.mastodon }}">Mastodon →</a>{% endif %}
-      {% if post.twitter %}<a href="{{ post.twitter }}">Twitter →</a>{% endif %}
+      {% if mastodon %}<a href="{{ mastodon }}">Mastodon →</a>{% endif %}
+      {% if twitter %}<a href="{{ twitter }}">Twitter →</a>{% endif %}
       {% if post.reddit %}<a href="{{ post.reddit }}">Reddit →</a>{% endif %}
     </span>
   </footer>
