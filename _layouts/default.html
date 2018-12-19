@@ -97,4 +97,20 @@
     </header>
     {{ content }}
   </body>
+
+  <script type="text/javascript">
+    function pad(number) {
+      return ("0" + number).slice(-2)
+    }
+
+    let elements = document.getElementsByTagName("time")
+
+    for (let i = 0; i < elements.length; i++) {
+      let element = elements[i]
+      let datetime = element.attributes.datetime.value
+      let date = new Date(datetime)
+
+      elements[i].innerText = pad(date.getDate()) + '/' + pad(date.getMonth()) + '/' + date.getFullYear() + ' ' + pad(date.getHours()) + ":" + pad(date.getMinutes())
+    }
+  </script>
 </html>

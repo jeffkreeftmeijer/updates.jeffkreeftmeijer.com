@@ -5,9 +5,9 @@
   {{ post.content }}
   <footer>
     {% if page.url == post.url %}
-    <time datetime="{{ post.date }}">{{ post.date | date: "%d/%m/%Y %H:%M" }}</time>
+    <time datetime="{{ post.date | date: "%FT%TZ" }}">{{ post.date | date: "%d/%m/%Y %H:%M" }}</time>
     {% else %}
-    <a href="{{ post.url }}"><time datetime="{{ post.date }}">{{ post.date | date: "%d/%m/%Y %H:%M" }}</time></a>
+    <a href="{{ post.url }}"><time datetime="{{ post.date | date: "%FT%TZ" }}">{{ post.date | date: "%d/%m/%Y %H:%M" }}</time></a>
     {% endif %}
     <span>
       {% if post.mastodon %}<a href="{{ post.mastodon }}">Mastodon →</a>{% endif %}
