@@ -19,7 +19,7 @@
     {% if page.url == post.url %}
     <time datetime="{{ post.date | date: "%FT%TZ" }}">{{ post.date | date: "%d/%m/%Y %H:%M" }}</time>
     {% else %}
-    <a href="{{ post.url }}"><time datetime="{{ post.date | date: "%FT%TZ" }}">{{ post.date | date: "%d/%m/%Y %H:%M" }}</time></a>
+    <a href="{{ post.url }}"><time datetime="{{ post.date | date: "%FT%TZ" }}">{{ post.date | date: "%d/%m/%Y %H:%M UTC" }}</time></a>
     {% endif %}
     <span>
       {% if mastodon %}<a href="{{ mastodon }}">Mastodon →</a>{% endif %}
