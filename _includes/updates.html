@@ -29,3 +29,44 @@
 </ul>
 </footer>
 {% endif %}
+
+<script>
+  var windowScrolled = function(){
+    let innerHeight = window.innerHeight
+    let scrollY = window.scrollY
+    let offsetHeight = document.documentElement.offsetHeight
+
+    if(scrollY > (offsetHeight - innerHeight * 3)) {
+      let url = document.getElementById('older').href
+
+      var xhr = new XMLHttpRequest()
+      xhr.onload = nextPageLoaded
+      xhr.open('GET', url)
+      xhr.responseType = 'document'
+      xhr.send()
+
+      window.removeEventListener('scroll', windowScrolled)
+    }
+  }
+
+  var nextPageLoaded = function(){
+    let updates = document.getElementById("updates")
+    let elements = this.responseXML.querySelectorAll("ul#updates > li")
+
+    for(i = 0; i < elements.length; i++) {
+      updates.appendChild(elements[i])
+    }
+
+    let newOlder = this.responseXML.getElementById('older')
+    if(newOlder) {
+      olderLink.href = newOlder.href
+      window.addEventListener('scroll', windowScrolled)
+    }
+  }
+
+  var olderLink = document.getElementById('older')
+  if(olderLink) {
+    window.addEventListener('scroll', windowScrolled)
+    document.querySelector('body > footer').style.display = 'none'
+  }
+</script>
