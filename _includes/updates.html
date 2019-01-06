@@ -1,0 +1,29 @@
+<hr>
+
+<ul id="updates">
+  {% for post in paginator.posts %}
+    <li>
+      {% include update.html %}
+    </li>
+  {% endfor %}
+</ul>
+
+{% if paginator.total_pages > 1 %}
+<hr>
+<ul id="pagination">
+  <span>
+    {% if paginator.next_page %}
+      <li>
+        <a href="{{ paginator.next_page_path | prepend: site.baseurl }}">Older</a>
+      </li>
+    {% endif %}
+  </span>
+  <span>
+    {% if paginator.previous_page %}
+      <li>
+        <a href="{{ paginator.previous_page_path | prepend: site.baseurl }}">Newer</a>
+      </li>
+    {% endif %}
+  </span>
+</ul>
+{% endif %}

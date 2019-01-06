@@ -47,7 +47,7 @@
         margin: 0;
       }
 
-      ul#updates{
+      ul#updates, ul#pagination{
         list-style: none;
         padding: 0;
       }
@@ -63,7 +63,7 @@
         font-size: smaller;
       }
 
-      header, footer{
+      header, footer, ul#pagination{
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
@@ -105,10 +105,12 @@
   <body>
     <header>
       <h1><a href="/">Updates</a>. By <a href="https://jeffkreeftmeijer.com">Jeff Kreeftmeijer</a></h1>
-      {% if page.url == "/" %}
-        <a class="replies" href="/with_replies">with replies</a>
-      {% elsif page.url == "/with_replies/" %}
-        <a class="replies" href="/">without replies</a>
+      {% if page.layout == "default" %}
+        {% if page.url contains "/with_replies" %}
+          <a class="replies" href="/">without replies</a>
+        {% else %}
+          <a class="replies" href="/with_replies">with replies</a>
+        {% endif %}
       {% endif %}
     </header>
     {{ content }}

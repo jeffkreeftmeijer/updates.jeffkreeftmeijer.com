@@ -1,12 +1,7 @@
 ---
 layout: default
+pagination:
+  enabled: true
+  tag: noreply
 ---
-<ul id="updates">
-  {% for post in site.posts %}
-    {% unless post.in_reply_to %}
-      <li>
-        {% include update.html %}
-      </li>
-    {% endunless %}
-  {% endfor %}
-</ul>
+{% include updates.html %}

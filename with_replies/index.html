@@ -1,10 +1,6 @@
 ---
 layout: default
+pagination:
+  enabled: true
 ---
-<ul id="updates">
-  {% for post in site.posts %}
-    <li>
-      {% include update.html %}
-    </li>
-  {% endfor %}
-</ul>
+{% include updates.html %}

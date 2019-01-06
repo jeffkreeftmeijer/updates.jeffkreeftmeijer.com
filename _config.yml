@@ -2,6 +2,10 @@ timezone: utc
 url: "https://updates.jeffkreeftmeijer.com"
 plugins:
   - jekyll-sitemap
+pagination:
+  enabled: true
+  per_page: 25
+  sort_reverse: true
 defaults:
   -
     scope:
