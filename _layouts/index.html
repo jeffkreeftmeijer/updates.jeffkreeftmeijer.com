@@ -1,0 +1,14 @@
+---
+layout: default
+---
+<header>
+  <h1><a href="/">Updates</a>. By <a href="https://jeffkreeftmeijer.com">Jeff Kreeftmeijer</a></h1>
+  {% if page.layout == "index" %}
+    {% if page.url contains "/with_replies" %}
+      <a class="replies" href="/">without replies</a>
+    {% else %}
+      <a class="replies" href="/with_replies">with replies</a>
+    {% endif %}
+  {% endif %}
+</header>
+{{ content }}
